@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
 (function () {
     document.addEventListener("DOMContentLoaded", function () {
         console.log("Logging: william's browser started");
-        displayHeliosStarted();
+        displayWilliam's browserStarted();
 
         document.body.addEventListener("click", function (event) {
             let target = event.target;
@@ -158,15 +158,15 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    function displayHeliosStarted() {
+    function displayWilliam's browserStarted() {
         let logContainer = document.getElementById("logContainer");
 
         if (!logContainer) {
-            setTimeout(displayHeliosStarted, 100);
+            setTimeout(displayWilliam's browserStarted, 100);
             return;
         }
 
-        addLogEntry(`[Helios Log] Helios started successfully`, true);
+        addLogEntry(`[William's browser Log] William's browser started successfully`, true);
     }
 
     let retryCount = 0;
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        addLogEntry(`[Helios Log] ${message}`);
+        addLogEntry(`[William's browser Log] ${message}`);
     }
 
     function addLogEntry(message, isHeader = false) {
@@ -279,8 +279,8 @@ function applySavedTheme() {
 window.onload = applySavedTheme;
 
 
-const heliosMessageHistory = [];
-const HELIOS_API_KEY_PARTS = [
+const William's browserMessageHistory = [];
+const William's browser_API_KEY_PARTS = [
   's', 'k', '-', 'o', 'r', '-', 'v', '1', '-', '8', 'e', 'f', '6', '7', '3', 'c', 
   'a', '3', '4', 'g', 'h', 'i', 'j', 'l', 'm', 'n', '2', '2', '5', '2', '3', '3', '0', 'f', 'c', '2', 'd', '5', '4', 
   '2', 'c', '1', '7', '0', '9', 'e', '9', '3', '3', '1', 'e', '2', 'c', '7', 'd', 
@@ -295,15 +295,15 @@ const uselessChars = [ 's', 'k', '-', 'o', 'r', '-', 'v', '1', '-', '8', 'e', 'f
   '6', '9', '0', '4', '4', '5', 'd', '1', '2', '3', '2', '1', '9', 'd', 'a', '3', 
   '6', '0', '0', '5', 'd', '5', '5', '6', 'c'];
 
-function getHeliosApiKey() {
-  const filteredParts = HELIOS_API_KEY_PARTS.filter(part => part !== 'X' && uselessChars.includes(part));
+function getWilliam's browserApiKey() {
+  const filteredParts = William's browser_API_KEY_PARTS.filter(part => part !== 'X' && uselessChars.includes(part));
   return filteredParts.join('');
 }
 
 
-const heliosSystemMessage = {
+const William's browserSystemMessage = {
   role: "system",
-  content: `You are Helios AI, an advanced AI assistant designed to be helpful, knowledgeable, and adaptable. You were made by dinguschan.`
+  content: `You are William's browser AI, an advanced AI assistant designed to be helpful, knowledgeable, and adaptable. You were made by dinguschan.`
 };
 
 const chatbotToggler = document.querySelector(".wrench-buttonaa");
@@ -320,7 +320,7 @@ chatbotToggler.addEventListener("click", () => {
   );
 
   if (!existingWelcomeMessage) {
-    addHeliosMessage("Hi there! How may I assist you?", false);
+    addWilliam's browserMessage("Hi there! How may I assist you?", false);
   }
 });
 
@@ -329,43 +329,43 @@ closeBtn.addEventListener("click", () => {
   document.body.classList.remove("show-chatbot");
 });
 
-sendChatBtn.addEventListener("click", sendHeliosMessage);
+sendChatBtn.addEventListener("click", sendWilliam's browserMessage);
 
 chatInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
-    sendHeliosMessage();
+    sendWilliam's browserMessage();
   }
 });
 
-async function sendHeliosMessage() {
+async function sendWilliam's browserMessage() {
   const userMessage = chatInput.value.trim();
   if (!userMessage) return;
 
-  addHeliosMessage(userMessage, true);
+  addWilliam's browserMessage(userMessage, true);
   chatInput.value = '';
 
-  heliosMessageHistory.push({ role: "user", content: userMessage });
+  William's browserMessageHistory.push({ role: "user", content: userMessage });
   const loadingElement = addLoadingMessage();
 
   try {
-    const response = await tryHeliosModels(userMessage);
+    const response = await tryWilliam's browserModels(userMessage);
     let formattedResponse = response.text;
 
     formattedResponse = formatBulletedList(formattedResponse);
     
     formattedResponse = convertToStyledBold(formattedResponse);
     
-    heliosMessageHistory.push({ role: "assistant", content: formattedResponse });
+    William's browserMessageHistory.push({ role: "assistant", content: formattedResponse });
     loadingElement.remove();
-    addHeliosMessage(formattedResponse, false);
+    addWilliam's browserMessage(formattedResponse, false);
   } catch (error) {
     loadingElement.remove();
-    addHeliosMessage(`Error: ${error.message}`, false);
+    addWilliam's browserMessage(`Error: ${error.message}`, false);
   }
 }
 
-function addHeliosMessage(content, isUser) {
+function addWilliam's browserMessage(content, isUser) {
   const messageElement = document.createElement("div");
   messageElement.classList.add("chat", isUser ? "outgoing" : "incoming");
 
@@ -400,7 +400,7 @@ function addLoadingMessage() {
   return loadingElement;
 }
 
-async function tryHeliosModels(userMessage) {
+async function tryWilliam's browserModels(userMessage) {
   const models = [
     { name: "google/gemini-2.0-flash-exp:free", free: true },
     { name: "google/gemini-flash-1.5-exp", free: true },
@@ -413,12 +413,12 @@ async function tryHeliosModels(userMessage) {
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${getHeliosApiKey()}`,
+          "Authorization": `Bearer ${getWilliam's browserApiKey()}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           model: model.name,
-          messages: [heliosSystemMessage, ...heliosMessageHistory],
+          messages: [William's browserSystemMessage, ...William's browserMessageHistory],
           temperature: 0.7,
           max_tokens: 2048,
           repetition_penalty: 1
@@ -661,13 +661,13 @@ document.addEventListener('DOMContentLoaded', function() {
 ➥ 𝗱𝗮𝘁𝗮𝗣𝗿𝗼𝗰𝗲𝘀𝘀𝗼𝗿.𝗘𝘅𝗲𝗰𝘂𝘁𝗲𝗣𝗿𝗼𝗰𝗲𝘀𝘀.𝗙𝗮𝗶𝗹𝗲𝗱()
 
 𝗦𝘂𝗴𝗴𝗲𝘀𝘁𝗲𝗱 𝗔𝗰𝘁𝗶𝗼𝗻𝘀:
-• Visit [https://github.com/dinguschan-owo/Helios] and verify your browser is up to date.
+• Visit [https://github.com/dinguschan-owo/William's browser] and verify your browser is up to date.
 • Ensure that the input data is correctly formatted and not null.
 • Scrub any injection attempts.
 • Review the initialization sequence for all dependent objects.
 • Check the logs for any preceding errors that may provide context.
 • Clear browser cache and clear and reset website data storage.
-• If all else fails, visit the above mentioned offical Github page [https://github.com/dinguschan-owo/Helios] and redownload the latest stable version (Helios v1.𝟽.0).
+• If all else fails, visit the above mentioned offical Github page [https://github.com/dinguschan-owo/William's browser] and redownload the latest stable version (William's browser v1.𝟽.0).
 `;
             document.body.appendChild(contentFetchingProtocolErrorOverlay);
         }
@@ -691,7 +691,7 @@ function initializeTabs() {
     document.body.appendChild(newContent);
 
     tabs.push({
-        url: 'helios://start',
+        url: 'William's browser://start',
         content: newContent.innerHTML
     });
 
@@ -715,13 +715,13 @@ document.addEventListener('DOMContentLoaded', initializeTabs);
 
 let currentTabIndex = 0;
 const tabs = [{
-    url: 'helios://start',
+    url: 'William's browser://start',
     content: `<div class="Xt7Lm9Kp3R8f">
   <p>𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!</p>
-</div><div class="top-right-boxaa" title="Click here to visit the Helios GitHub page!">
+</div><div class="top-right-boxaa" title="Click here to visit the William's browser GitHub page!">
   <p><i class="fa-brands fa-github"></i></p>
 </div>
-        <h23>Helios</h23>
+        <h23>William's browser</h23>
         <h21>𝚟𝟷.𝟿.𝟶</h21>
         <div class="search-baraa">
           <div class="search-containeraa">
@@ -748,7 +748,7 @@ const tabs = [{
             <i class="fas fa-search search-iconaa"></i></div>`
 }];
 
-const trustedSchemes = ['helios://', 'https://', 'http://'];
+const trustedSchemes = ['William's browser://', 'https://', 'http://'];
 
 document.getElementById('add-tabaa').addEventListener('click', function() {
     const newTabIndex = tabs.length;
@@ -763,7 +763,7 @@ document.getElementById('add-tabaa').addEventListener('click', function() {
     document.body.appendChild(newContent);
 
     tabs.push({
-        url: 'helios://start',
+        url: 'William's browser://start',
         content: newContent.innerHTML
     });
 
@@ -785,7 +785,7 @@ function attachClickListeners() {
 }
 
 function openGitHub() {
-    window.open('https://github.com/dinguschan-owo/Helios/', '_blank');
+    window.open('https://github.com/dinguschan-owo/William's browser/', '_blank');
 }
 
 document.addEventListener('DOMContentLoaded', attachClickListeners);
@@ -845,13 +845,13 @@ function updateTabContent(url, content, tab) {
     localStorage.setItem(`tab_${currentTabIndex}`, url);
     sessionStorage.setItem(`tab_${currentTabIndex}`, url);
 
-    if (url === 'helios://start') {
+    if (url === 'William's browser://start') {
         content.innerHTML = `<div class="Xt7Lm9Kp3R8f">
   <p>𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!</p>
-</div><div class="top-right-boxaa" title="Click here to visit the Helios GitHub page!">
+</div><div class="top-right-boxaa" title="Click here to visit the William's browser GitHub page!">
   <p><i class="fa-brands fa-github"></i></p>
 </div>
-        <h23>Helios</h23>
+        <h23>William's browser</h23>
         <h21>𝚟𝟷.𝟿.𝟶</h21>
         <div class="search-baraa">
           <div class="search-containeraa">
@@ -890,10 +890,10 @@ function updateTabContent(url, content, tab) {
             }
         });
 
-    } else if (url === 'helios://settings') {
+    } else if (url === 'William's browser://settings') {
         content.innerHTML = `
         <div class="sidebarvv">
-  <h1>Helios Settings</h1>
+  <h1>William's browser Settings</h1>
 
 <button class="active" onclick="showCategory('historyvv')">History</button>
   <button onclick="showCategory('cloakingvv')">Cloaking</button>
@@ -908,7 +908,7 @@ function updateTabContent(url, content, tab) {
 </div>
 
 <div class="content-containervv" id="browserlogsvv">
-  <h3>Helios Browser Logs</h3>
+  <h3>William's browser Browser Logs</h3>
   <div id="logContainer" style="max-height: 400px; overflow-y: auto; border: 3px solid #66ffa1; padding: 10px; background: #222; color: #fff; border-radius: 5px; width: 750px;"></div>
 </div>
 
@@ -919,7 +919,7 @@ function updateTabContent(url, content, tab) {
   <button onclick="openInBlob()">Open in blob:</button>
 </div>
 <div class="content-containervv" id="miscvv">
-  <h31>Customize Helios's Appearance</h31><div class="theme-preview-container">
+  <h31>Customize William's browser's Appearance</h31><div class="theme-preview-container">
 <div class="theme-preview" onclick="activatePreview(this)">
   <div class="browser-simulation">
     <div class="browser-header">
@@ -930,7 +930,7 @@ function updateTabContent(url, content, tab) {
             <div class="barbarbar"></div>
 
     </div>
-    <div class="browser-content"><div class="hetitle">Helios</div><div class="titlelinee"></div><div class="dropmed"></div><div class="send4"></div></div>
+    <div class="browser-content"><div class="hetitle">William's browser</div><div class="titlelinee"></div><div class="dropmed"></div><div class="send4"></div></div>
   </div>
   <p class="theme-name"><i>Default Dark</i> by 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗</p>
 </div>
@@ -945,7 +945,7 @@ function updateTabContent(url, content, tab) {
             <div class="barbarbar-lightmode"></div>
 
     </div>
-    <div class="browser-content-lightmode"><div class="hetitle-lightmode">Helios</div><div class="titlelinee-lightmode"></div><div class="dropmed-lightmode"></div><div class="send4-lightmode"></div></div>
+    <div class="browser-content-lightmode"><div class="hetitle-lightmode">William's browser</div><div class="titlelinee-lightmode"></div><div class="dropmed-lightmode"></div><div class="send4-lightmode"></div></div>
   </div>
   <p class="theme-name-lightmode"><i>Dark Ember</i> by bromse</p>
 </div>
@@ -953,7 +953,7 @@ function updateTabContent(url, content, tab) {
 </div></div>
 
         `;
-        tab.querySelector('.tab-nameaa').textContent = 'Helios Settings';
+        tab.querySelector('.tab-nameaa').textContent = 'William's browser Settings';
         tabs[currentTabIndex].content = content.innerHTML;
         tabs[currentTabIndex].url = url;
 
@@ -968,7 +968,7 @@ function updateTabContent(url, content, tab) {
                 messageDiv.style.display = 'none';
             }, 3000);
         });
-    } else if (url === 'helios://urls') {
+    } else if (url === 'William's browser://urls') {
         showUrlsList(content, tab);
     } else {
         fetchExternalContent(url, content, currentTabIndex);
@@ -981,7 +981,7 @@ function updateTabContent(url, content, tab) {
 
     updateLockIcon(url);
     updateSpecialDivs(url);
-    if (url === 'helios://start' || url === 'helios://settings' || url === 'helios://urls') {
+    if (url === 'William's browser://start' || url === 'William's browser://settings' || url === 'William's browser://urls') {
         // For internal pages, hide the spinner immediately after setting content
         hideSpinner(tab);
     } else {
@@ -1371,17 +1371,17 @@ function modifyCss(cssText) {
 function updateSpecialDivs() {
     const checkURL = () => {
         const urlInput = document.querySelector('.browser-baraa .address-baraa input');
-        const isHeliosURL = urlInput && urlInput.value.startsWith('helios://');
+        const isWilliam's browserURL = urlInput && urlInput.value.startsWith('William's browser://');
         const officialC = document.querySelector('.official-caa');
         const official = document.querySelector('.officialaa');
 
         if (officialC) {
-            officialC.style.opacity = isHeliosURL ? '1' : '0';
-            officialC.style.pointerEvents = isHeliosURL ? '' : 'none';
+            officialC.style.opacity = isWilliam's browserURL ? '1' : '0';
+            officialC.style.pointerEvents = isWilliam's browserURL ? '' : 'none';
         }
         if (official) {
-            official.style.opacity = isHeliosURL ? '1' : '0';
-            official.style.pointerEvents = isHeliosURL ? '' : 'none';
+            official.style.opacity = isWilliam's browserURL ? '1' : '0';
+            official.style.pointerEvents = isWilliam's browserURL ? '' : 'none';
         }
     };
 
@@ -1417,11 +1417,11 @@ document.getElementById('url-baraa').addEventListener('keypress', function(e) {
 });
 
 document.querySelector('.home-buttonaa').addEventListener('click', function() {
-    changeTabContent('helios://start');
+    changeTabContent('William's browser://start');
 });
 
 document.querySelector('.settings-buttonaa').addEventListener('click', function() {
-    changeTabContent('helios://settings');
+    changeTabContent('William's browser://settings');
 });
 
 function changeTabContent(url) {
@@ -1443,7 +1443,7 @@ function changeTabContent(url) {
         document.getElementById('url-baraa').dispatchEvent(event);
     }
 }
-// Function to open Helios in an about:blank tab
+// Function to open William's browser in an about:blank tab
 
 function openInAboutBlank() {
     const newWindow = window.open('about:blank', '_blank');
@@ -1460,7 +1460,7 @@ function openInAboutBlank() {
 
     newWindow.document.close();
 }
-// Function to open Helios in a blob: tab
+// Function to open William's browser in a blob: tab
 
 async function openInBlob() {
     // Clone the document's static DOM structure
@@ -1698,7 +1698,7 @@ document.querySelector('.forward-buttonaa').addEventListener('click', function()
 
 // Initialize history for existing tabs
 document.querySelectorAll('.tabaa').forEach((tab, index) => {
-    const url = tab.querySelector('.tab-nameaa').textContent === 'New Tab' ? 'helios://start' : document.getElementById('url-baraa').value;
+    const url = tab.querySelector('.tab-nameaa').textContent === 'New Tab' ? 'William's browser://start' : document.getElementById('url-baraa').value;
     updateHistory(index, url);
 });
 
@@ -1764,14 +1764,14 @@ function handleSquareButtonClick() {
     firstTab.querySelector('.tab-nameaa').textContent = 'New Tab';
 
     // Reset URL bar
-    document.getElementById('url-baraa').value = 'helios://start';
+    document.getElementById('url-baraa').value = 'William's browser://start';
 
     // Reset tab content
-    updateTabContent('helios://start', firstTabContent, firstTab);
+    updateTabContent('William's browser://start', firstTabContent, firstTab);
 
     // Reset tab history
     const history = getTabHistory(0);
-    history.history = ['helios://start'];
+    history.history = ['William's browser://start'];
     history.currentIndex = 0;
 
     // Update active tab
@@ -1866,23 +1866,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function showUrlsList(content, tab) {
     content.innerHTML = `
-        <h2 style="font-size: 48px; margin-bottom: 20px; border-bottom: 3px solid #fff;">Helios Internal URLs</h2>
+        <h2 style="font-size: 48px; margin-bottom: 20px; border-bottom: 3px solid #fff;">William's browser Internal URLs</h2>
         <ul style="list-style-type: none; padding: 0;">
             <li style="margin-bottom: 15px;">
-                <a href="javascript:void(0);" data-url="helios://start" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">helios://start&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
-                <p style="margin: 5px 0 0 0; color: #b3b3b3;">Helios start page</p>
+                <a href="javascript:void(0);" data-url="William's browser://start" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">William's browser://start&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
+                <p style="margin: 5px 0 0 0; color: #b3b3b3;">William's browser start page</p>
             </li>
             <li style="margin-bottom: 15px;">
-                <a href="javascript:void(0);" data-url="helios://settings" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">helios://settings&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
-                <p style="margin: 5px 0 0 0; color: #b3b3b3;">Helios settings page</p>
+                <a href="javascript:void(0);" data-url="William's browser://settings" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">William's browser://settings&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
+                <p style="margin: 5px 0 0 0; color: #b3b3b3;">William's browser settings page</p>
             </li>
             <li style="margin-bottom: 15px;">
-                <a href="javascript:void(0);" data-url="helios://urls" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">helios://urls&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
-                <p style="margin: 5px 0 0 0; color: #b3b3b3;">List of Helios internal URLs</p>
+                <a href="javascript:void(0);" data-url="William's browser://urls" class="custom-url-link" style="font-size: 24px; color: #66ffa1; text-decoration: none;">William's browser://urls&nbsp;<i class="fa-solid fa-link" style="font-size: 18px; color: #66ffa1;"></i></a>
+                <p style="margin: 5px 0 0 0; color: #b3b3b3;">List of William's browser internal URLs</p>
             </li>
         </ul>
     `;
-    tab.querySelector('.tab-nameaa').textContent = 'Helios URLs';
+    tab.querySelector('.tab-nameaa').textContent = 'William's browser URLs';
 
     // Add click event listeners to the custom URL links
     content.querySelectorAll('.custom-url-link').forEach(link => {
@@ -1913,12 +1913,12 @@ function hideSpinner(tabElement) {
 
 function downloadPage() {
     // Attempt to fetch from GitHub first
-    const url = "https://raw.githubusercontent.com/dinguschan-owo/Helios/refs/heads/main/Offline-File/Helios-Offline.html";
+    const url = "https://raw.githubusercontent.com/dinguschan-owo/William's browser/refs/heads/main/Offline-File/William's browser-Offline.html";
     fetch(url)
         .then(response => response.blob()).then(blob => {
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = "Helios-Offline.html";
+            a.download = "William's browser-Offline.html";
             a.click();
         })
         .catch(error => {
@@ -1928,7 +1928,7 @@ function downloadPage() {
         });
 
     function fetchLocalFile() {
-        fetch('/Offline-File/Helios-Offline.html')
+        fetch('/Offline-File/William's browser-Offline.html')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch from local server');
@@ -1949,7 +1949,7 @@ function downloadPage() {
 
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'Helios-Offline.html';
+        a.download = 'William's browser-Offline.html';
         document.body.appendChild(a);
 
         a.click();
